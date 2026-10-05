@@ -4,6 +4,7 @@ A daily-report analysis toolkit that simulates an **ad-agency workflow**: ingest
 
 > **Business context**: Ad agencies pull Google Ads / GA4 reports every day and need quick answers to three questions — (1) Is the data clean? (2) Where is money spent and does it pay back? (3) Which ad groups are burning budget below the profitability line and need action? This project automates that loop with pandas.
 
+![ROAS Quadrant](output/chart_adgroup_roas_vs_spend_2026Q3.png)
 ---
 
 ## What's New in v2
@@ -101,10 +102,10 @@ After the run, `output/` contains **4 CSVs and 3 charts**, and the console print
 
 | Quadrant | Condition | Action |
 |---|---|---|
-| ⭐ **star** | spend ≥ $1,000, clicks ≥ 100, ROAS ≥ break-even | Increase budget ~20% |
-| 🔥 **burn** | spend ≥ $1,000, clicks ≥ 100, ROAS < break-even | Cut budget or pause; optimize creatives/bids |
-| 🌱 **potential** | spend < $1,000, ROAS ≥ break-even | Test with small budget |
-| ⚪ **watch** | everything else | Monitor |
+|  **star** | spend ≥ $1,000, clicks ≥ 100, ROAS ≥ break-even | Increase budget ~20% |
+|  **burn** | spend ≥ $1,000, clicks ≥ 100, ROAS < break-even | Cut budget or pause; optimize creatives/bids |
+|  **potential** | spend < $1,000, ROAS ≥ break-even | Test with small budget |
+|  **watch** | everything else | Monitor |
 
 **Break-even ROAS = 1 / gross margin** (0.4 in this project → **2.5**). Spending $1 on ads must return at least $2.5 in revenue to cover the 60% cost of goods.
 
@@ -133,8 +134,8 @@ After the run, `output/` contains **4 CSVs and 3 charts**, and the console print
 3. **Auditability**: every cleaning decision leaves a flag (`cost_imputed` / `cost_refunded` / `is_cost_outlier`) — "traceable data" awareness.
 4. **Decision-oriented output**: ships "problem list + action list + charts", not raw data — what an agency cloud analyst does daily: turn data into client decisions.
 
-### 30-second interview pitch
-> "I built a pandas pipeline that mimics a daily ad-agency reporting loop. v2 upgraded the screening logic from CVR to ROAS: CVR ignores order value, so a group with 1.55% CVR and ROAS 1.13 looked fine but was actually losing money below the 2.5 break-even at a 40% gross margin. The output is a quadrant chart plus star/burn lists with recommended actions."
+### Interview
+> I built a pandas pipeline that mimics a daily ad-agency reporting loop. v2 upgraded the screening logic from CVR to ROAS: CVR ignores order value, so a group with 1.55% CVR and ROAS 1.13 looked fine but was actually losing money below the 2.5 break-even at a 40% gross margin. The output is a quadrant chart plus star/burn lists with recommended actions.
 
 ---
 
